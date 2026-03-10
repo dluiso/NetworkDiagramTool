@@ -1,0 +1,43 @@
+{
+  "name": "netdiagram-frontend",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.28.1",
+    "axios": "^1.7.9",
+    "zustand": "^5.0.3",
+    "cytoscape": "^3.31.0",
+    "cytoscape-dagre": "^2.5.0",
+    "cytoscape-cola": "^2.5.1",
+    "three": "^0.171.0",
+    "@react-three/fiber": "^8.17.14",
+    "@react-three/drei": "^9.121.4",
+    "lucide-react": "^0.468.0",
+    "react-hot-toast": "^2.4.1",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^2.5.2",
+    "react-colorful": "^5.6.1",
+    "dagre": "^0.8.5"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "@types/three": "^0.171.0",
+    "@types/cytoscape": "^3.21.8",
+    "@vitejs/plugin-react": "^4.3.4",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.7",
+    "tailwindcss": "^3.4.17",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.5.1",
+    "@types/dagre": "^0.7.3"
+  }
+}

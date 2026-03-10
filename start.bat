@@ -1,0 +1,47 @@
+@echo off
+title NetDiagram - Network Topology Manager
+color 0A
+
+echo.
+echo  ███╗   ██╗███████╗████████╗██████╗ ██╗ █████╗  ██████╗ ██████╗  █████╗ ███╗   ███╗
+echo  ████╗  ██║██╔════╝╚══██╔══╝██╔══██╗██║██╔══██╗██╔════╝ ██╔══██╗██╔══██╗████╗ ████║
+echo  ██╔██╗ ██║█████╗     ██║   ██║  ██║██║███████║██║  ███╗██████╔╝███████║██╔████╔██║
+echo  ██║╚██╗██║██╔══╝     ██║   ██║  ██║██║██╔══██║██║   ██║██╔══██╗██╔══██║██║╚██╔╝██║
+echo  ██║ ╚████║███████╗   ██║   ██████╔╝██║██║  ██║╚██████╔╝██║  ██║██║  ██║██║ ╚═╝ ██║
+echo  ╚═╝  ╚═══╝╚══════╝   ╚═╝   ╚═════╝ ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝     ╚═╝
+echo.
+echo  Network Topology Manager - v1.0.0
+echo  =====================================
+echo.
+
+cd /d "%~dp0"
+
+:: Start Backend
+echo [1/2] Iniciando Backend (FastAPI)...
+start "NetDiagram Backend" cmd /k "cd /d %~dp0backend && call venv\Scripts\activate.bat && python run.py"
+
+:: Wait a moment for backend to start
+timeout /t 3 /nobreak > nul
+
+:: Start Frontend
+echo [2/2] Iniciando Frontend (React)...
+start "NetDiagram Frontend" cmd /k "cd /d %~dp0frontend && npm run dev"
+
+:: Wait for frontend
+timeout /t 3 /nobreak > nul
+
+echo.
+echo  ✓ Servicios iniciados!
+echo.
+echo  Backend API:  http://localhost:8000
+echo  Frontend:     http://localhost:5173
+echo  API Docs:     http://localhost:8000/docs
+echo.
+echo  Login: admin / admin123
+echo.
+
+:: Open browser
+timeout /t 2 /nobreak > nul
+start http://localhost:5173
+
+pause

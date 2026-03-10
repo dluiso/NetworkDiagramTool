@@ -1,0 +1,125 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Color system (CSS variables) ────────────────────────────────────────── */
+/* Dark mode is the default */
+:root {
+  --surface-900: 15 23 42;    /* #0f172a */
+  --surface-800: 30 41 59;    /* #1e293b */
+  --surface-700: 51 65 85;    /* #334155 */
+  --surface-600: 71 85 105;   /* #475569 */
+  --cy-bg: #0f172a;
+  --cy-edge: #334155;
+  --cy-text: #94a3b8;
+}
+
+/* Light mode overrides — toggled by adding .light class to <html> */
+html.light {
+  --surface-900: 241 245 249;  /* #f1f5f9 */
+  --surface-800: 255 255 255;  /* #ffffff */
+  --surface-700: 248 250 252;  /* #f8fafc */
+  --surface-600: 226 232 240;  /* #e2e8f0 */
+  --cy-bg: #f1f5f9;
+  --cy-edge: #94a3b8;
+  --cy-text: #475569;
+}
+
+/* Light mode text overrides ─ flip the dark text classes to readable dark-on-light values */
+html.light .text-white          { color: #1e293b; }
+html.light .text-slate-100      { color: #1e293b; }
+html.light .text-slate-200      { color: #334155; }
+html.light .text-slate-300      { color: #475569; }
+html.light .text-slate-400      { color: #64748b; }
+html.light .text-slate-500      { color: #94a3b8; }
+html.light .text-slate-600      { color: #cbd5e1; }
+html.light .text-slate-200.font-mono { color: #334155; }
+
+/* Keep status/accent colors intact in light mode */
+html.light .text-green-400  { color: #16a34a; }
+html.light .text-yellow-400 { color: #ca8a04; }
+html.light .text-red-400    { color: #dc2626; }
+html.light .text-cyan-400   { color: #0891b2; }
+html.light .text-blue-400   { color: #2563eb; }
+html.light .text-brand-400  { color: #4f46e5; }
+html.light .text-brand-500  { color: #4338ca; }
+
+/* Light tooltip */
+html.light .cy-tooltip {
+  background: rgba(255, 255, 255, 0.97);
+  border-color: #e2e8f0;
+  color: #1e293b;
+}
+
+/* ─── Base ─────────────────────────────────────────────────────────────────── */
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    @apply bg-surface-900 text-slate-100 font-sans;
+    margin: 0;
+    padding: 0;
+  }
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-surface-800;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-surface-600 rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-brand-500;
+  }
+}
+
+/* ─── Component classes ────────────────────────────────────────────────────── */
+@layer components {
+  .btn-primary {
+    @apply bg-brand-600 hover:bg-brand-500 text-white font-medium px-4 py-2 rounded-lg transition-colors duration-150 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-secondary {
+    @apply bg-surface-700 hover:bg-surface-600 text-slate-200 font-medium px-4 py-2 rounded-lg transition-colors duration-150;
+  }
+  .btn-danger {
+    @apply bg-red-700 hover:bg-red-600 text-white font-medium px-4 py-2 rounded-lg transition-colors duration-150;
+  }
+  .btn-ghost {
+    @apply hover:bg-surface-700 text-slate-300 hover:text-white font-medium px-4 py-2 rounded-lg transition-colors duration-150;
+  }
+  .card {
+    @apply bg-surface-800 border border-surface-700 rounded-xl;
+  }
+  .input {
+    @apply bg-surface-700 border border-surface-600 text-slate-100 rounded-lg px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent placeholder-slate-500;
+  }
+  .label {
+    @apply text-slate-400 text-sm font-medium mb-1 block;
+  }
+  .badge {
+    @apply inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium;
+  }
+}
+
+/* ─── Cytoscape ────────────────────────────────────────────────────────────── */
+.cy-container {
+  width: 100%;
+  height: 100%;
+  background: var(--cy-bg);
+}
+
+.cy-tooltip {
+  position: absolute;
+  background: rgba(30, 41, 59, 0.95);
+  border: 1px solid #334155;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 12px;
+  pointer-events: none;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+  color: #f1f5f9;
+}

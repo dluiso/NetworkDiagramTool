@@ -1,0 +1,70 @@
+# ============================================================
+# NetDiagram — .gitignore
+# ============================================================
+
+# Environment variables (never commit secrets)
+.env
+.env.local
+.env.production
+*.env
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Python virtual environments
+backend/venv/
+backend/.venv/
+venv/
+.venv/
+env/
+
+# Database (contains user data — do not commit)
+*.db
+*.sqlite
+*.sqlite3
+
+# Logs
+*.log
+logs/
+
+# Node.js
+node_modules/
+frontend/node_modules/
+
+# Vite / build output (commit only for production deploy)
+frontend/dist/
+frontend/.vite/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE / editors
+.vscode/settings.json
+.vscode/launch.json
+.idea/
+*.swp
+*.swo
+*~
+
+# Test coverage
+htmlcov/
+.coverage
+coverage.xml
+
+# Temporary files
+*.tmp
+*.bak
+*.orig
