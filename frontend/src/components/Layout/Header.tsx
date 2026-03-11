@@ -52,7 +52,9 @@ export default function Header() {
           </div>
           <span className="text-slate-300">{user?.username ?? '...'}</span>
           {isAdmin() && (
-            <ShieldCheck size={13} className="text-brand-400" title="Administrator" />
+            <span title="Administrator">
+              <ShieldCheck size={13} className="text-brand-400" />
+            </span>
           )}
         </Link>
 
